@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class AjedrezReto1 {
     // Muestra la posicion de la pieza en el tablero.
     public static void mostrarPosicion(int[][] tablero) {
+        // Muestra posicion de la pieza
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
                 if (tablero[j][i] == 1) {
@@ -27,8 +28,8 @@ public class AjedrezReto1 {
         int numeroTablero = numero - 1;
         switch (i) {
             case 1:
-                tablero[letraTablero - 1][numeroTablero + 1] = 2;
-                return columna(letra - 1) + "" + (numero + 1) + ", ";
+                tablero[letraTablero - 1][numeroTablero + 1] = 2; // Cambia en el tablero un 0 por un 2 ya que esa posición será la que podrá moverse.
+                return columna(letra - 1) + "" + (numero + 1) + ", "; // Devuelve el String con texto de la posicion a la que puede moverse.
             case 2:
                 tablero[letraTablero][numeroTablero + 1] = 2;
                 return columna(letra) + "" + (numero + 1) + ", ";
@@ -55,6 +56,7 @@ public class AjedrezReto1 {
         }
     }
     public static char columna(int i) {
+        // Define la posicion con letra depende de la coordenada que le pasen.
         return switch (i) {
             case 1 -> 'a';
             case 2 -> 'b';
@@ -75,6 +77,8 @@ public class AjedrezReto1 {
         String letraString = sc.nextLine(); // Esto es la coordenada de las letras
         System.out.print("Número: ");
         int numero = scanner(); // Esto es la coordenada de los numero
+
+        // La letra que introduces es visual y hay que volver a ponerla como numero.
         int letra = switch (letraString) {
             case "a" -> 1;
             case "b" -> 2;
@@ -87,6 +91,7 @@ public class AjedrezReto1 {
             default -> 0;
         } - 1;
 
+        // Define todo el tablero con un 0
         for (int i = tablero.length - 1; i >= 0; i--) {
             for (int j = 0; j < tablero.length; j++) {
                 tablero [j][i] = 0;
@@ -158,11 +163,11 @@ public class AjedrezReto1 {
             c--;
         }
 
-        System.out.println("---------------"); // Separador
-        System.out.println("a b c d e f g h"); // Muestra por pantalla las coordenadas de las letras en el tablero
+        System.out.println("---------------"); // Separador.
+        System.out.println("a b c d e f g h"); // Muestra por pantalla las coordenadas de las letras en el tablero.
         System.out.println();
 
-        System.out.println(movimientos);
+        System.out.println(movimientos); // Movimientos que puede hacer.
 
     }
 }
