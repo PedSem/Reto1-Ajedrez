@@ -104,56 +104,51 @@ public class AjedrezReto1 {
         letra += 1;
         numero += 1;
         if (letra != 1 && numero != 1 && letra != 8 && numero != 8) {
-            System.out.println("Está dentro");
 
             // Posibles Movimientos del rey dentro de los bordes del tablero
             movimientos += movimiento(1, letra, numero, tablero) + movimiento(2, letra, numero, tablero) + movimiento(3, letra, numero, tablero) + movimiento(4, letra, numero, tablero) + movimiento(6, letra, numero, tablero) + movimiento(7, letra, numero, tablero) + movimiento(8, letra, numero, tablero) + movimiento(9, letra, numero, tablero);
 
         } else if (letra == 1 && numero == 1){
-            System.out.println("Esquina");
 
             // Posibles Movimientos del rey en la esquina inferior izquierda
             movimientos += movimiento(2, letra, numero, tablero) + movimiento(3, letra, numero, tablero) + movimiento(6, letra, numero, tablero);
 
         } else if (letra == 1 && numero == 8) {
-            System.out.println("Esquina");
 
             // Posibles Movimientos del rey en la esquina superior izquierda
             movimientos += movimiento(6, letra, numero, tablero) + movimiento(8, letra, numero, tablero) + movimiento(9, letra, numero, tablero);
 
         } else if (letra == 8 && numero == 8) {
-            System.out.println("Esquina");
 
             // Posibles Movimientos del rey en la esquina superior derecha
             movimientos += movimiento(4, letra, numero, tablero) + movimiento(7, letra, numero, tablero) + movimiento(8, letra, numero, tablero);
 
         } else if (letra == 8 && numero == 1) {
-            System.out.println("Esquina");
 
             // Posibles Movimientos del rey en la esquina inferior derecha
             movimientos += movimiento(1, letra, numero, tablero) + movimiento(2, letra, numero, tablero) + movimiento(4, letra, numero, tablero);
 
         } else if (numero == 1) {
-            System.out.println("Borde");
 
             // Posibles Movimientos del rey en el borde inferior (sin esquinas)
             movimientos += movimiento(1, letra, numero, tablero) + movimiento(2, letra, numero, tablero) + movimiento(3, letra, numero, tablero) + movimiento(4, letra, numero, tablero) + movimiento(6, letra, numero, tablero);
+
         } else if (letra == 1) {
-            System.out.println("Borde");
 
             // Posibles Movimientos del rey en el borde izquierdo (sin esquinas)
             movimientos += movimiento(2, letra, numero, tablero) + movimiento(3, letra, numero, tablero) + movimiento(6, letra, numero, tablero) + movimiento(8, letra, numero, tablero) + movimiento(9, letra,numero, tablero);
+
         } else if (numero == 8) {
-            System.out.println("Borde");
 
             // Posibles Movimientos del rey en el borde superior (sin esquinas)
             movimientos += movimiento(4, letra, numero, tablero) + movimiento(6, letra, numero, tablero) + movimiento(7, letra, numero, tablero) + movimiento(8, letra, numero, tablero) + movimiento(9, letra, numero, tablero);
+
         } else {
-            System.out.println("Borde");
 
             // Posibles Movimientos del rey en el borde superior (sin esquinas)
             movimientos += movimiento(1, letra, numero, tablero) + movimiento(2, letra, numero, tablero) + movimiento(4, letra, numero, tablero) + movimiento(7, letra, numero, tablero) + movimiento(8, letra, numero, tablero);
         }
+
         // Mostrar Tablero por pantalla
         for (int i = tablero.length - 1; i >= 0; i--) {
             for (int j = 0; j < tablero.length; j++) {
@@ -162,7 +157,8 @@ public class AjedrezReto1 {
             System.out.println("| " + c);
             c--;
         }
-        System.out.println("---------------");
+
+        System.out.println("---------------"); // Separador
         System.out.println("a b c d e f g h"); // Muestra por pantalla las coordenadas de las letras en el tablero
         System.out.println();
 
