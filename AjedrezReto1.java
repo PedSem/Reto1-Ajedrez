@@ -167,5 +167,6 @@ public class AjedrezReto1 {
         System.out.println();
 
         System.out.println(movimientos);
+
     }
 }
