@@ -39,16 +39,16 @@ public class AjedrezReto1 {
             case 4:
                 tablero[letraTablero - 1][numeroTablero] = 2;
                 return columna(letra - 1) + "" + numero + ", ";
-            case 6:
+            case 5:
                 tablero[letraTablero + 1][numeroTablero] = 2;
                 return columna(letra + 1) + "" + numero + ", ";
-            case 7:
+            case 6:
                 tablero[letraTablero - 1][numeroTablero - 1] = 2;
                 return columna(letra - 1) + "" + (numero - 1) + ", ";
-            case 8:
+            case 7:
                 tablero[letraTablero][numeroTablero - 1] = 2;
                 return columna(letra) + "" + (numero - 1) + ", ";
-            case 9:
+            case 8:
                 tablero[letraTablero + 1][numeroTablero - 1] = 2;
                 return columna(letra + 1) + "" + (numero - 1);
             default:
@@ -88,8 +88,8 @@ public class AjedrezReto1 {
             case "f" -> 6;
             case "g" -> 7;
             case "h" -> 8;
-            default -> 0;
-        } - 1;
+            default -> 0; //Nunca entra en el default
+        } - 1; //Se usa ya que el swtich cuenta desde el 1 y el array empieza en 0
 
         // Define todo el tablero con un 0
         for (int i = tablero.length - 1; i >= 0; i--) {
@@ -111,22 +111,22 @@ public class AjedrezReto1 {
         if (letra != 1 && numero != 1 && letra != 8 && numero != 8) {
 
             // Posibles Movimientos del rey dentro de los bordes del tablero
-            movimientos += movimiento(1, letra, numero, tablero) + movimiento(2, letra, numero, tablero) + movimiento(3, letra, numero, tablero) + movimiento(4, letra, numero, tablero) + movimiento(6, letra, numero, tablero) + movimiento(7, letra, numero, tablero) + movimiento(8, letra, numero, tablero) + movimiento(9, letra, numero, tablero);
-
+            movimientos += movimiento(1, letra, numero, tablero) + movimiento(2, letra, numero, tablero) + movimiento(3, letra, numero, tablero) + movimiento(4, letra, numero, tablero) + movimiento(5, letra, numero, tablero) + movimiento(6, letra, numero, tablero) + movimiento(7, letra, numero, tablero) + movimiento(8, letra, numero, tablero);
+            //Porque "i" tiene valores fijos?
         } else if (letra == 1 && numero == 1){
 
             // Posibles Movimientos del rey en la esquina inferior izquierda
-            movimientos += movimiento(2, letra, numero, tablero) + movimiento(3, letra, numero, tablero) + movimiento(6, letra, numero, tablero);
+            movimientos += movimiento(2, letra, numero, tablero) + movimiento(3, letra, numero, tablero) + movimiento(5, letra, numero, tablero);
 
         } else if (letra == 1 && numero == 8) {
 
             // Posibles Movimientos del rey en la esquina superior izquierda
-            movimientos += movimiento(6, letra, numero, tablero) + movimiento(8, letra, numero, tablero) + movimiento(9, letra, numero, tablero);
+            movimientos += movimiento(5, letra, numero, tablero) + movimiento(7, letra, numero, tablero) + movimiento(8, letra, numero, tablero);
 
         } else if (letra == 8 && numero == 8) {
 
             // Posibles Movimientos del rey en la esquina superior derecha
-            movimientos += movimiento(4, letra, numero, tablero) + movimiento(7, letra, numero, tablero) + movimiento(8, letra, numero, tablero);
+            movimientos += movimiento(4, letra, numero, tablero) + movimiento(6, letra, numero, tablero) + movimiento(7, letra, numero, tablero);
 
         } else if (letra == 8 && numero == 1) {
 
@@ -136,22 +136,22 @@ public class AjedrezReto1 {
         } else if (numero == 1) {
 
             // Posibles Movimientos del rey en el borde inferior (sin esquinas)
-            movimientos += movimiento(1, letra, numero, tablero) + movimiento(2, letra, numero, tablero) + movimiento(3, letra, numero, tablero) + movimiento(4, letra, numero, tablero) + movimiento(6, letra, numero, tablero);
+            movimientos += movimiento(1, letra, numero, tablero) + movimiento(2, letra, numero, tablero) + movimiento(3, letra, numero, tablero) + movimiento(4, letra, numero, tablero) + movimiento(5, letra, numero, tablero);
 
         } else if (letra == 1) {
 
             // Posibles Movimientos del rey en el borde izquierdo (sin esquinas)
-            movimientos += movimiento(2, letra, numero, tablero) + movimiento(3, letra, numero, tablero) + movimiento(6, letra, numero, tablero) + movimiento(8, letra, numero, tablero) + movimiento(9, letra,numero, tablero);
+            movimientos += movimiento(2, letra, numero, tablero) + movimiento(3, letra, numero, tablero) + movimiento(5, letra, numero, tablero) + movimiento(7, letra, numero, tablero) + movimiento(8, letra,numero, tablero);
 
         } else if (numero == 8) {
 
             // Posibles Movimientos del rey en el borde superior (sin esquinas)
-            movimientos += movimiento(4, letra, numero, tablero) + movimiento(6, letra, numero, tablero) + movimiento(7, letra, numero, tablero) + movimiento(8, letra, numero, tablero) + movimiento(9, letra, numero, tablero);
+            movimientos += movimiento(4, letra, numero, tablero) + movimiento(5, letra, numero, tablero) + movimiento(6, letra, numero, tablero) + movimiento(7, letra, numero, tablero) + movimiento(8, letra, numero, tablero);
 
         } else {
 
             // Posibles Movimientos del rey en el borde superior (sin esquinas)
-            movimientos += movimiento(1, letra, numero, tablero) + movimiento(2, letra, numero, tablero) + movimiento(4, letra, numero, tablero) + movimiento(7, letra, numero, tablero) + movimiento(8, letra, numero, tablero);
+            movimientos += movimiento(1, letra, numero, tablero) + movimiento(2, letra, numero, tablero) + movimiento(4, letra, numero, tablero) + movimiento(6, letra, numero, tablero) + movimiento(7, letra, numero, tablero);
         }
 
         // Mostrar Tablero por pantalla
