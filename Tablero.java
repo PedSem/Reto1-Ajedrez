@@ -40,4 +40,20 @@ public class Tablero {
 
         return tablero;
     }
+
+    //Para no tener que crear en cada pieza un metodo columna, lo he puesto en tablero asi solo habra que llamarlo desde la clase Tablero (Tablero.columna)
+    public static char columna(int i) {
+        // Define la posicion con letra depende de la coordenada que le pasen.
+        return switch (i) {
+            case 1 -> 'a';
+            case 2 -> 'b';
+            case 3 -> 'c';
+            case 4 -> 'd';
+            case 5 -> 'e';
+            case 6 -> 'f';
+            case 7 -> 'g';
+            case 8 -> 'h';
+            default -> 'x';
+        };
+    }
 }

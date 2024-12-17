@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+//Este main habria que implementarlo en la clase Menu(que seria el Main) porque no tiene sentido tener dos clases Main
 public class Main {
     public static void main(String[] args) {
         Tablero tb = new Tablero();

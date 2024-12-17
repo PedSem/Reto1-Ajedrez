@@ -3,92 +3,72 @@ import java.util.Scanner;
 public class Menu {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String pieza;
-        String color;
-        String posicion;
-        String nombrePieza = ""; // Variable para almacenar el nombre completo de la pieza
+        boolean piezas;
 
-        // Menú de selección de piezas
-        System.out.println("====================================");
-        System.out.println("          Selección de Piezas      ");
-        System.out.println("====================================");
-        do {
+        System.out.println("--------------------------");
+        System.out.println("""
+                Colores:
+                (B)lanco
+                (N)egro""");
+        System.out.print("Introduce la inicial del color de la pieza con la que vas a jugar: ");
+        String color = sc.nextLine().toUpperCase(); // Pone minusculas en mayusculas
+
+        // Validacion del la letra del color
+        while (!color.equals("B")  && !color.equals("N")) {
+            System.out.println("Ese color no es valido, asegurate de introducir la letra inicial del color correctamente.");
             System.out.println("""
-                    Piezas:
-                    (R)ey
-                    (D)ama
-                    (T)orre
-                    (A)lfil
-                    (C)aballo
-                    (P)eón""");
-            System.out.print("¿Qué pieza eliges? ");
-            pieza = sc.nextLine().toUpperCase(); // Pone minúsculas en mayúsculas
+                Colores:
+                (B)lanco
+                (N)egro""");
+            System.out.print("Introduce la letra inicial del color de la pieza con la que vas a jugar: ");
+            color = sc.nextLine().toUpperCase();
+        }
+
+        do {
+            piezas = true;
+            System.out.println("--------------------------");
+            System.out.println("""
+                Piezas:
+                (R)ey
+                (D)ama
+                (T)orre
+                (A)lfil
+                (C)aballo
+                (P)eón""");
+            System.out.print("Introduce la letra inicial de la pieza con la que vas a jugar: ");
+            String pieza = sc.nextLine().toUpperCase(); // Pone minusculas en mayusculas
 
             switch (pieza) {
                 case "R":
-                    nombrePieza = "Rey";
-                    System.out.println("Has escogido el rey");
+                    System.out.println("Has escogido el Rey.");
                     break;
                 case "D":
-                    nombrePieza = "Dama";
-                    System.out.println("Has escogido la dama");
+                    System.out.println("Has escogido la Dama.");
                     break;
                 case "T":
-                    nombrePieza = "Torre";
-                    System.out.println("Has escogido la torre");
+                    System.out.println("Has escogido la Torre.");
                     break;
                 case "A":
-                    nombrePieza = "Alfil";
-                    System.out.println("Has escogido el alfil");
+                    System.out.println("Has escogido el Alfil");
                     break;
                 case "C":
-                    nombrePieza = "Caballo";
-                    System.out.println("Has escogido el caballo");
+                    System.out.println("Has escogido el Caballo.");
                     break;
                 case "P":
-                    nombrePieza = "Peón";
-                    System.out.println("Has escogido el peón");
+                    System.out.println("Has escogido el Peon.");
                     break;
                 default:
-                    System.out.println("No existe esa pieza. Por favor, elige una válida.");
-                    pieza = ""; // Reiniciar la selección
+                    System.out.println("No existe esa pieza.");
+                    piezas = false;
                     break;
             }
-        } while (pieza.isEmpty());
+        } while (!piezas);
+        System.out.println("--------------------------");
 
-        // Menú de selección de colores
-        System.out.println("====================================");
-        System.out.println("          Selección de Colores     ");
-        System.out.println("====================================");
-        do {
-            System.out.println("""
-                    Colores:
-                    (B)lanco
-                    (N)egro""");
-            System.out.print("¿De qué color es la pieza? ");
-            color = sc.nextLine().toUpperCase(); // Pone minúsculas en mayúsculas
 
-            if (!color.equals("B") && !color.equals("N")) {
-                System.out.println("Ese color no es válido, asegúrate de poner la letra correctamente.");
-            }
-        } while (!color.equals("B") && !color.equals("N"));
+        System.out.print("Introduce la posición en la que se encuentra la pieza ([a-h] [1-8] Ej. b4): ");
+        String posicion = sc.nextLine();
 
-        // Menú de selección de posición
-        System.out.println("====================================");
-        System.out.println("          Selección de Posición     ");
-        System.out.println("====================================");
-        System.out.print("¿En qué posición se encuentra ((a-h) (1-8) ej. b4)? ");
-        posicion = sc.nextLine();
 
-        // Resumen de la selección
-        System.out.println("====================================");
-        System.out.println("          Resumen de Selección      ");
-        System.out.println("====================================");
-        System.out.println("Pieza: " + nombrePieza);
-        System.out.println("Color: " + (color.equals("B") ? "Blanco" : "Negro"));
-        System.out.println("Posición: " + posicion);
-        System.out.println("====================================");
-
-        sc.close();
     }
 }
