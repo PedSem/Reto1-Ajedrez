@@ -79,7 +79,7 @@ public class Rey {
             default -> 'x';
         };
     }
-    public static String MainRey(String[][] tablero, int letra, int numero) {
+    public static String Rey(String[][] tablero, int letra, int numero) {
         numero -= 1;
         tablero[letra][numero] = "👑";
 
