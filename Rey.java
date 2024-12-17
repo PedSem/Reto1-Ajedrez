@@ -2,16 +2,17 @@ import java.util.Scanner;
 
 public class Rey {
     static Tablero tb = new Tablero();
-    public static void mostrarPosicion(String[][] tablero) {
+    public static String mostrarPosicion(String[][] tablero) {
         // Muestra la posicion de la pieza en el tablero.
-        String reyBlanco = "♔";
+        String reyBlanco = "\uD83D\uDC51";
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
                 if (tablero[j][i] == reyBlanco) {
-                    System.out.println("La posicion es " + columna(j + 1) + (i + 1));
+                    return "La posicion es " + columna(j + 1) + (i + 1);
                 }
             }
         }
+        return "Error";
     }
     public static int scanner() {
         Scanner sc = new Scanner(System.in);
@@ -78,33 +79,9 @@ public class Rey {
             default -> 'x';
         };
     }
-    public static void main(String[] args) {
-        String[][] tablero;
-
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Letra: ");
-        String letraString = sc.nextLine(); // Esto es la coordenada de las letras
-        System.out.print("Número: ");
-        int numero = scanner(); // Esto es la coordenada de los numero
-        // La letra que introduces es visual y hay que volver a ponerla como numero.
-        int letra = switch (letraString) {
-            case "a" -> 1;
-            case "b" -> 2;
-            case "c" -> 3;
-            case "d" -> 4;
-            case "e" -> 5;
-            case "f" -> 6;
-            case "g" -> 7;
-            case "h" -> 8;
-            default -> 0;
-        } - 1; // Como el array cuenta desde 0 es necesario restarle 1
-
-        // Define la posicion del rey en el tablero con un 1
-
-        tablero = tb.InicializarTablero();
+    public static String MainRey(String[][] tablero, int letra, int numero) {
+        numero -= 1;
         tablero[letra][numero] = "👑";
-
-        mostrarPosicion(tablero);
 
         String movimientos = "Posibles movimientos: ";
         letra += 1;
@@ -155,8 +132,6 @@ public class Rey {
             movimientos += movimiento(1, letra, numero, tablero) + movimiento(2, letra, numero, tablero) + movimiento(4, letra, numero, tablero) + movimiento(7, letra, numero, tablero) + movimiento(8, letra, numero, tablero);
         }
 
-        tb.getTablero(); // Imprime el tablero modificado
-
-        System.out.println(movimientos); // Movimientos que puede hacer.
+        return movimientos; // Movimientos que puede hacer.
     }
 }
