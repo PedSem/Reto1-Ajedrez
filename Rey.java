@@ -2,11 +2,12 @@ import java.util.Scanner;
 
 public class Rey {
     static Tablero tb = new Tablero();
-    public static void mostrarPosicion(int[][] tablero) {
+    public static void mostrarPosicion(String[][] tablero) {
         // Muestra la posicion de la pieza en el tablero.
+        String reyBlanco = "♔";
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
-                if (tablero[j][i] == 1) {
+                if (tablero[j][i] == reyBlanco) {
                     System.out.println("La posicion es " + columna(j + 1) + (i + 1));
                 }
             }
@@ -16,46 +17,47 @@ public class Rey {
         Scanner sc = new Scanner(System.in);
         return sc.nextInt() - 1;
     }
-    public static String movimiento (int coordenada, int letra, int numero, int[][] tablero) {
+    public static String movimiento (int coordenada, int letra, int numero, String[][] tablero) {
         /*
         | 1 2 3 |
         | 4 X 6 |
         | 7 8 9 |
         X es la posicion del rey y los numero los posibles movimientos
          */
+        String verde = "🟩";
         int letraTablero = letra - 1;
         int numeroTablero = numero - 1;
         switch (coordenada) {
             case 1:
-                tablero[letraTablero - 1][numeroTablero + 1] = 2; // Cambia en el tablero un 0 por un 2 ya que esa posición será la que podrá moverse.
+                tablero[letraTablero - 1][numeroTablero + 1] = verde; // Cambia la coordenada en la que se puede mover por un cuadrado verde
                 tb.setTablero(tablero); // Modifica el objeto tablero
                 return columna(letra - 1) + "" + (numero + 1) + ", "; // Devuelve el String con texto de la posicion a la que puede moverse.
             case 2:
-                tablero[letraTablero][numeroTablero + 1] = 2;
+                tablero[letraTablero][numeroTablero + 1] = verde;
                 tb.setTablero(tablero);
                 return columna(letra) + "" + (numero + 1) + ", ";
             case 3:
-                tablero[letraTablero + 1][numeroTablero + 1] = 2;
+                tablero[letraTablero + 1][numeroTablero + 1] = verde;
                 tb.setTablero(tablero);
                 return columna(letra + 1) + "" + (numero + 1) + ", ";
             case 4:
-                tablero[letraTablero - 1][numeroTablero] = 2;
+                tablero[letraTablero - 1][numeroTablero] = verde;
                 tb.setTablero(tablero);
                 return columna(letra - 1) + "" + numero + ", ";
             case 6:
-                tablero[letraTablero + 1][numeroTablero] = 2;
+                tablero[letraTablero + 1][numeroTablero] = verde;
                 tb.setTablero(tablero);
                 return columna(letra + 1) + "" + numero + ", ";
             case 7:
-                tablero[letraTablero - 1][numeroTablero - 1] = 2;
+                tablero[letraTablero - 1][numeroTablero - 1] = verde;
                 tb.setTablero(tablero);
                 return columna(letra - 1) + "" + (numero - 1) + ", ";
             case 8:
-                tablero[letraTablero][numeroTablero - 1] = 2;
+                tablero[letraTablero][numeroTablero - 1] = verde;
                 tb.setTablero(tablero);
                 return columna(letra) + "" + (numero - 1) + ", ";
             case 9:
-                tablero[letraTablero + 1][numeroTablero - 1] = 2;
+                tablero[letraTablero + 1][numeroTablero - 1] = verde;
                 tb.setTablero(tablero);
                 return columna(letra + 1) + "" + (numero - 1);
             default:
@@ -77,7 +79,7 @@ public class Rey {
         };
     }
     public static void main(String[] args) {
-        int[][] tablero = new int[8][8];
+        String[][] tablero;
 
         Scanner sc = new Scanner(System.in);
         System.out.print("Letra: ");
@@ -97,17 +99,10 @@ public class Rey {
             default -> 0;
         } - 1; // Como el array cuenta desde 0 es necesario restarle 1
 
-        // Define todo el tablero con un 0
-        for (int i = tablero.length - 1; i >= 0; i--) {
-            for (int j = 0; j < tablero.length; j++) {
-                tablero [j][i] = 0;
-            }
-        }
-
         // Define la posicion del rey en el tablero con un 1
-        tablero[letra][numero] = 1;
 
-
+        tablero = tb.InicializarTablero();
+        tablero[letra][numero] = "👑";
 
         mostrarPosicion(tablero);
 
