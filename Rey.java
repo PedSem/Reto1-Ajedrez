@@ -2,18 +2,6 @@ import java.util.Scanner;
 
 public class Rey {
     static Tablero tb = new Tablero();
-    public static String mostrarPosicion(String[][] tablero) {
-        // Muestra la posicion de la pieza en el tablero.
-        String reyBlanco = "\uD83D\uDC51";
-        for (int i = 0; i < tablero.length; i++) {
-            for (int j = 0; j < tablero[i].length; j++) {
-                if (tablero[j][i] == reyBlanco) {
-                    return "La posicion es " + columna(j + 1) + (i + 1);
-                }
-            }
-        }
-        return "Error";
-    }
     public static int scanner() {
         Scanner sc = new Scanner(System.in);
         return sc.nextInt() - 1;
@@ -32,52 +20,38 @@ public class Rey {
             case 1:
                 tablero[letraTablero - 1][numeroTablero + 1] = verde; // Cambia la coordenada en la que se puede mover por un cuadrado verde
                 tb.setTablero(tablero); // Modifica el objeto tablero
-                return columna(letra - 1) + "" + (numero + 1) + ", "; // Devuelve el String con texto de la posicion a la que puede moverse.
+                return Tablero.NumeroToLetra(letra - 1) + "" + (numero + 1) + ", "; // Devuelve el String con texto de la posicion a la que puede moverse.
             case 2:
                 tablero[letraTablero][numeroTablero + 1] = verde;
                 tb.setTablero(tablero);
-                return columna(letra) + "" + (numero + 1) + ", ";
+                return Tablero.NumeroToLetra(letra) + "" + (numero + 1) + ", ";
             case 3:
                 tablero[letraTablero + 1][numeroTablero + 1] = verde;
                 tb.setTablero(tablero);
-                return columna(letra + 1) + "" + (numero + 1) + ", ";
+                return Tablero.NumeroToLetra(letra + 1) + "" + (numero + 1) + ", ";
             case 4:
                 tablero[letraTablero - 1][numeroTablero] = verde;
                 tb.setTablero(tablero);
-                return columna(letra - 1) + "" + numero + ", ";
+                return Tablero.NumeroToLetra(letra - 1) + "" + numero + ", ";
             case 6:
                 tablero[letraTablero + 1][numeroTablero] = verde;
                 tb.setTablero(tablero);
-                return columna(letra + 1) + "" + numero + ", ";
+                return Tablero.NumeroToLetra(letra + 1) + "" + numero + ", ";
             case 7:
                 tablero[letraTablero - 1][numeroTablero - 1] = verde;
                 tb.setTablero(tablero);
-                return columna(letra - 1) + "" + (numero - 1) + ", ";
+                return Tablero.NumeroToLetra(letra - 1) + "" + (numero - 1) + ", ";
             case 8:
                 tablero[letraTablero][numeroTablero - 1] = verde;
                 tb.setTablero(tablero);
-                return columna(letra) + "" + (numero - 1) + ", ";
+                return Tablero.NumeroToLetra(letra) + "" + (numero - 1) + ", ";
             case 9:
                 tablero[letraTablero + 1][numeroTablero - 1] = verde;
                 tb.setTablero(tablero);
-                return columna(letra + 1) + "" + (numero - 1);
+                return Tablero.NumeroToLetra(letra + 1) + "" + (numero - 1);
             default:
                 return "Error";
         }
-    }
-    public static char columna(int i) {
-        // Define la posicion con letra depende de la coordenada que le pasen.
-        return switch (i) {
-            case 1 -> 'a';
-            case 2 -> 'b';
-            case 3 -> 'c';
-            case 4 -> 'd';
-            case 5 -> 'e';
-            case 6 -> 'f';
-            case 7 -> 'g';
-            case 8 -> 'h';
-            default -> 'x';
-        };
     }
     public static String Rey(String[][] tablero, int letra, int numero) {
         numero -= 1;

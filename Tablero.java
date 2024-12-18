@@ -40,4 +40,33 @@ public class Tablero {
 
         return tablero;
     }
+
+    public static char NumeroToLetra(int i) {
+        // Define la posicion con letra depende de la coordenada que le pasen.
+        return switch (i) {
+            case 1 -> 'a';
+            case 2 -> 'b';
+            case 3 -> 'c';
+            case 4 -> 'd';
+            case 5 -> 'e';
+            case 6 -> 'f';
+            case 7 -> 'g';
+            case 8 -> 'h';
+            default -> 'x';
+        };
+    }
+
+    public static int LetraToNumero(String letraString) { // Convierte la letra que pones en número. Conforme el tablero
+        return switch (letraString) {
+            case "a" -> 1;
+            case "b" -> 2;
+            case "c" -> 3;
+            case "d" -> 4;
+            case "e" -> 5;
+            case "f" -> 6;
+            case "g" -> 7;
+            case "h" -> 8;
+            default -> 0;
+        } - 1;// Como el array cuenta desde 0 es necesario restarle 1
+    }
 }
