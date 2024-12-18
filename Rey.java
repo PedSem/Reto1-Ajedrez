@@ -2,22 +2,11 @@ import java.util.Scanner;
 
 public class Rey {
     static Tablero tb = new Tablero();
-    public static String mostrarPosicion(String[][] tablero) {
-        // Muestra la posicion de la pieza en el tablero.
-        String reyBlanco = "\uD83D\uDC51";
-        for (int i = 0; i < tablero.length; i++) {
-            for (int j = 0; j < tablero[i].length; j++) {
-                if (tablero[j][i] == reyBlanco) {
-                    return "La posicion es " + Tablero.columna(j + 1) + (i + 1);
-                }
-            }
-        }
-        return "Error";
-    }
     public static int scanner() {
         Scanner sc = new Scanner(System.in);
         return sc.nextInt() - 1;
     }
+
     public static String movimiento (int coordenada, int letra, int numero, String[][] tablero) {
         /*
         | 1 2 3 |

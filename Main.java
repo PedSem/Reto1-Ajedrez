@@ -28,7 +28,6 @@ public class Main {
         tablero = tb.InicializarTablero(); // Inicializa tablero en negro y blanco
 
         String movimientos = (rey.Rey(tablero, letra, numero)); // Guarda los posibles movimientos en un String para mostrarlos después
-        System.out.println(rey.mostrarPosicion(tablero)); // Muestra la posicion en la que esta
 
         tb.getTablero(); // Imprime el tablero modificado
         System.out.println(movimientos); // Imprime los posibles movimientos
