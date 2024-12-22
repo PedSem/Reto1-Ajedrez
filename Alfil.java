@@ -29,8 +29,6 @@ public class Alfil {
 
     }
     public static String movimientoAlfil(int coordenada,int letra,int numero,String[][]tablero){
-
-
             String verde = "🟩";
              int letratablero=letra-1;
              int numerotablero=numero-1;
@@ -41,21 +39,65 @@ public class Alfil {
          */
             switch (coordenada){// Los posibles casos donde el alfil se mueva
                 case 1:
-                    tablero[letratablero-1][numerotablero+1]=verde;
-                    tb.setTablero(tablero);
-                    return columna(letra-1) + "" + (numero+1) + ",";
+                    //Incompleta:falta que no se salga del limite
+                    int prueba1=letratablero-1;
+                    int prueba2=numerotablero+1;
+                    do{//Añado un bucle para contar las casillas en esa direccion
+                        tablero[prueba1][prueba2]=verde;
+                        tb.setTablero(tablero);
+                        letra--;
+                        numero++;
+                        prueba1--;
+                        prueba2++;
+                    }while (letra!=-1 && prueba1!=-1);
+                    if (letra!=-1){
+                        return columna(letra-1) + "" + (numero+1) + ",";
+                    }
                 case 3:
-                    tablero[letratablero+1][numerotablero+1]=verde;
-                    tb.setTablero(tablero);
-                    return columna(letra-1) + "" + (numero+1) + ",";
+                     int prueba3=letratablero+1;
+                     int prueba4=numerotablero+1;
+                     do{
+                         tablero[prueba3][prueba4]=verde;
+                         tb.setTablero(tablero);
+                         letra--;
+                         numero++;
+                         prueba3++;
+                         prueba4++;
+                     }while (letra!=1 && prueba3!=8);
+                     if(letra!=-1){
+                         return columna(letra+1) + "" + (numero+1) + ",";
+                     }
                 case 7:
-                    tablero[letratablero-1][numerotablero-1]=verde;
-                    tb.setTablero(tablero);
-                    return columna(letra-1) + "" + (numero+1) + ",";
+                    int prueba5=letratablero-1;
+                    int prueba6=numerotablero-1;
+                    do{
+                        tablero[prueba5][prueba6]=verde;
+                        tb.setTablero(tablero);
+                        letra--;
+                        numero++;
+                        prueba5--;
+                        prueba6--;
+
+
+                    }while (letra!=1 && prueba5!=-1);
+                    if(letra!=-1){
+                        return columna(letra-1) + "" + (numero-1) + ",";
+                    }
+
                 case 9:
-                    tablero[letratablero+1][numerotablero-1]=verde;
-                    tb.setTablero(tablero);
-                    return columna(letra+1) + "" + (numero+1) + ",";
+                    int prueba7=letratablero+1;
+                    int prueba8=numerotablero-1;
+                    do{
+                        tablero[prueba7][prueba8]=verde;
+                        tb.setTablero(tablero);
+                        letra--;
+                        numero++;
+                        prueba7++;
+                        prueba8--;
+                    }while (letra!=1 && prueba7!=8);
+                    if(letra!=1){
+                        return columna(letra+1) + "" + (numero-1) + ",";
+                    }
                 default:
                     return "Error";
 
@@ -74,7 +116,6 @@ public class Alfil {
         letra+=1;
         numero+=1;
 
-        /*
         if(letra!=1 && numero!=1 && letra!=8 && numero!=8){ //Los posibles movimientos del alfil fuera de los bordes del tablero
 
             movimientosAlfil+=movimientoAlfil(1,letra,numero,tablero) + movimientoAlfil(3,letra,numero,tablero) + movimientoAlfil(7,letra,numero,tablero) + movimientoAlfil(9,letra,numero,tablero);
@@ -103,13 +144,12 @@ public class Alfil {
             movimientosAlfil+=movimientoAlfil(7,letra,numero,tablero) + movimientoAlfil(9,letra,numero,tablero);
         }
 
-         */
-
-        if(letra==8 && numero==1){
-            movimientosAlfil+=movimientoAlfil(1,letra,numero,tablero);
 
 
-        }
+
+
+
+
         return movimientosAlfil;
 
 
