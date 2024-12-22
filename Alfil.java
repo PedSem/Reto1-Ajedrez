@@ -32,6 +32,8 @@ public class Alfil {
             String verde = "🟩";
              int letratablero=letra-1;
              int numerotablero=numero-1;
+              String prueba;
+              String resultado="";
         /* Los movimientos del alfil
         | 1   3 |
         |   X   |
@@ -43,46 +45,47 @@ public class Alfil {
                     int prueba1=letratablero-1;
                     int prueba2=numerotablero+1;
                     do{//Añado un bucle para contar las casillas en esa direccion
+
                         tablero[prueba1][prueba2]=verde;
                         tb.setTablero(tablero);
-                        letra--;
-                        numero++;
+                        prueba=columna(letra-1) + "" + (numero+1) + ",";
+                        resultado=resultado+prueba;
+                        letra--;//Simplifico la letra para que suba el diagonal
+                        numero++;//Aumento el numero para que suba en diagonal
                         prueba1--;
                         prueba2++;
-                    }while (letra!=-1 && prueba1!=-1);
-                    if (letra!=-1){
-                        return columna(letra-1) + "" + (numero+1) + ",";
-                    }
+                    }while (letra>=0 && prueba1>=0);
+                    return resultado;
+
                 case 3:
                      int prueba3=letratablero+1;
                      int prueba4=numerotablero+1;
                      do{
                          tablero[prueba3][prueba4]=verde;
                          tb.setTablero(tablero);
+                         prueba=columna(letra-1) + "" + (numero+1) + ",";
                          letra--;
                          numero++;
                          prueba3++;
                          prueba4++;
-                     }while (letra!=1 && prueba3!=8);
-                     if(letra!=-1){
-                         return columna(letra+1) + "" + (numero+1) + ",";
-                     }
+                         resultado=resultado + prueba;
+                     }while (letra>=0 && prueba3<8);
+                     return resultado;
                 case 7:
                     int prueba5=letratablero-1;
                     int prueba6=numerotablero-1;
                     do{
                         tablero[prueba5][prueba6]=verde;
                         tb.setTablero(tablero);
+                        prueba=columna(letra-1) + "" + (numero+1) + ",";
                         letra--;
                         numero++;
                         prueba5--;
                         prueba6--;
+                        resultado=resultado + prueba;
 
-
-                    }while (letra!=1 && prueba5!=-1);
-                    if(letra!=-1){
-                        return columna(letra-1) + "" + (numero-1) + ",";
-                    }
+                    }while (letra>1 && prueba5>1);
+                   return resultado ;
 
                 case 9:
                     int prueba7=letratablero+1;
@@ -90,14 +93,14 @@ public class Alfil {
                     do{
                         tablero[prueba7][prueba8]=verde;
                         tb.setTablero(tablero);
+                        prueba=columna(letra+1) + "" + (numero-1) + ",";
                         letra--;
                         numero++;
                         prueba7++;
                         prueba8--;
-                    }while (letra!=1 && prueba7!=8);
-                    if(letra!=1){
-                        return columna(letra+1) + "" + (numero-1) + ",";
-                    }
+                        resultado = resultado + prueba;
+                    }while (letra>=0 && prueba7<=8);
+                    return resultado;
                 default:
                     return "Error";
 
