@@ -32,75 +32,86 @@ public class Alfil {
             String verde = "🟩";
              int letratablero=letra-1;
              int numerotablero=numero-1;
-              String prueba;
-              String resultado="";
+             int posicionletraatras=letratablero-1;
+             int posicionnumeroatras=numerotablero-1;
+             int posicionletradelante=letratablero+1;
+             int posicionnumerodelante=numerotablero+1;
+
+              String columnamovimientos;//Para almacenar los movimientos de la pieza en la columna
+              String resultado="";//Para almacenar los posibles movimientos de la pieza
         /* Los movimientos del alfil
         | 1   3 |
         |   X   |
         | 7   9 |
          */
             switch (coordenada){// Los posibles casos donde el alfil se mueva
-                case 1:
-                    //Incompleta:falta que no se salga del limite
-                    int prueba1=letratablero-1;
-                    int prueba2=numerotablero+1;
+                case 1://Diagonal hacia arriba por la izquierda
+
                     do{//Añado un bucle para contar las casillas en esa direccion
 
-                        tablero[prueba1][prueba2]=verde;
+                        tablero[posicionletraatras][posicionnumerodelante]=verde;//Marca las posiciones de los movimientos del alfil
                         tb.setTablero(tablero);
-                        prueba=columna(letra-1) + "" + (numero+1) + ",";
-                        resultado=resultado+prueba;
-                        letra--;//Simplifico la letra para que suba el diagonal
-                        numero++;//Aumento el numero para que suba en diagonal
-                        prueba1--;
-                        prueba2++;
-                    }while (letra>=0 && prueba1>=0);
-                    return resultado;
 
-                case 3:
-                     int prueba3=letratablero+1;
-                     int prueba4=numerotablero+1;
+                        columnamovimientos=columna(letra-1) + "" + (numero+1) + ",";//Muestra la columna que esta ahora el alfil en diagonal
+
+                        resultado=resultado+columnamovimientos;//Concateno todos los posibles movimientos
+
+                        letra--;//Simplifico la letra para que coja la siguiente en el tablero
+                        numero++;//Aumento el numero para que coja la siguiente en el tablero
+                        posicionletraatras--;//Simplifico y aumento aquellas posiciones que se van a marcar en diagonal
+                        posicionnumerodelante++;
+
+                    }while (posicionletraatras>=0 && posicionnumerodelante<8);//Comprueba que no se pasa del limite del tablero
+
+                    return resultado;//Devuelve el resultado de esos movimientos del alfil en aquella dirección
+
+                case 3://Diagonal hacia arriba por la derecha
+
                      do{
-                         tablero[prueba3][prueba4]=verde;
+
+                         tablero[posicionletradelante][posicionnumerodelante]=verde;
                          tb.setTablero(tablero);
-                         prueba=columna(letra-1) + "" + (numero+1) + ",";
-                         letra--;
+                         columnamovimientos=columna(letra+1) + "" + (numero+1) + ",";
+                         letra++;
                          numero++;
-                         prueba3++;
-                         prueba4++;
-                         resultado=resultado + prueba;
-                     }while (letra>=0 && prueba3<8);
+                         posicionletradelante++;
+                         posicionnumerodelante++;
+                         resultado=resultado + columnamovimientos;
+                     }while ( posicionletradelante<8 && posicionnumerodelante<8);
                      return resultado;
-                case 7:
-                    int prueba5=letratablero-1;
-                    int prueba6=numerotablero-1;
-                    do{
-                        tablero[prueba5][prueba6]=verde;
-                        tb.setTablero(tablero);
-                        prueba=columna(letra-1) + "" + (numero+1) + ",";
-                        letra--;
-                        numero++;
-                        prueba5--;
-                        prueba6--;
-                        resultado=resultado + prueba;
 
-                    }while (letra>1 && prueba5>1);
-                   return resultado ;
+                case 7://Diagonal hacia abajo por la izquierda
 
-                case 9:
-                    int prueba7=letratablero+1;
-                    int prueba8=numerotablero-1;
                     do{
-                        tablero[prueba7][prueba8]=verde;
+                        tablero[posicionletraatras][posicionnumeroatras]=verde;
                         tb.setTablero(tablero);
-                        prueba=columna(letra+1) + "" + (numero-1) + ",";
+                        columnamovimientos=columna(letra-1) + "" + (numero-1) + ",";
                         letra--;
-                        numero++;
-                        prueba7++;
-                        prueba8--;
-                        resultado = resultado + prueba;
-                    }while (letra>=0 && prueba7<=8);
+                        numero--;
+                        posicionletraatras--;
+                        posicionnumeroatras--;
+                        resultado=resultado + columnamovimientos;
+
+                    }while ( posicionnumeroatras>=0 && posicionletraatras>=0);
+
+                   return resultado;
+
+                case 9://Diagonal hacia abajo por la derecha
+
+                    do{
+                        tablero[posicionletradelante][posicionnumeroatras]=verde;
+                        tb.setTablero(tablero);
+                        columnamovimientos=columna(letra+1) + "" + (numero-1) + ",";
+                        letra++;
+                        numero--;
+                        posicionletradelante++;
+                        posicionnumeroatras--;
+                        resultado = resultado +columnamovimientos;
+
+                    }while (posicionnumeroatras>=0 && posicionletradelante<8);
+
                     return resultado;
+
                 default:
                     return "Error";
 
@@ -144,15 +155,8 @@ public class Alfil {
             movimientosAlfil+=movimientoAlfil(7,letra,numero,tablero) + movimientoAlfil(9,letra,numero,tablero);
         }else{
             //Posibles movimientos del alfil en el borde superior(sin esquinas)
-            movimientosAlfil+=movimientoAlfil(7,letra,numero,tablero) + movimientoAlfil(9,letra,numero,tablero);
+            movimientosAlfil+=movimientoAlfil(1,letra,numero,tablero) + movimientoAlfil(7,letra,numero,tablero);
         }
-
-
-
-
-
-
-
         return movimientosAlfil;
 
 
