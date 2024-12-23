@@ -89,23 +89,32 @@ public class Menu {
         System.out.println();
 
         // Menú de selección de posición
-        //NO ESTÁ BIEN, TENGO QUE VALIDARLO BIEN
+        boolean posicionValida = false; 
+
         do {
-            char letra = posicion.charAt(0); //La letra siempre va a estar en la primera posicion
-            char numero = posicion.charAt(1); //El número siempre va a estar en la segunda posicion
-            do {
-                System.out.println("====================================");
-                System.out.println("          Selección de Posición     ");
-                System.out.println("====================================");
-                System.out.print("Introduce la posición en la que se encuentra la pieza ([a-h] [1-8] Ej. b4): ");
-                posicion = sc.nextLine();
+            System.out.println("====================================");
+            System.out.println("          Selección de Posición     ");
+            System.out.println("====================================");
+            System.out.print("Introduce la posición en la que se encuentra la pieza ([a-h][1-8], Ej. b4): ");
+            posicion = sc.nextLine().toLowerCase(); // Para que las mayusculas se pongan en minusculas
 
-            }while ((letra >= 'a' && letra <= 'h') && (numero >= '1' && numero <= '8'));
+            if (posicion.length() == 2) {
+                char letra = posicion.charAt(0); // La letra siempre está en la primera posición
+                char numero = posicion.charAt(1); // El número siempre está en la segunda posición
 
-        } while (posicion.length() != 2);//Hacer el bucle mientras se introduzcan más de 2 caracteres, tenemos en cuenta que se empieza contando desde 0
-        if (posicion.length() != 2){
-            System.out.println("Las coordenadas que has introducido son incorrectas. Inténtalo de nuevo");
-        }
+                // Verificar si letra y número están en los rangos correctos
+                if (letra >= 'a' && letra <= 'h' && numero >= '1' && numero <= '8') {
+                    posicionValida = true; // Entrada válida, salir del bucle
+                } else {
+                    System.out.println("Las coordenadas que has introducido son incorrectas. Inténtalo de nuevo.");
+                    System.out.println();
+                }
+            } else {
+                System.out.println("Las coordenadas deben tener exactamente 2 caracteres (Ej. b4). Inténtalo de nuevo.");
+                System.out.println();
+            }
+        } while (!posicionValida);
+
         System.out.println();
 
         // Resumen de la selección
