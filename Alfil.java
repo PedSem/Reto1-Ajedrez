@@ -3,6 +3,7 @@
 public class Alfil {
     static Tablero tb=new Tablero();
 
+
     public static String movimientoAlfil(int coordenada,int letra,int numero,String[][]tablero){
             String verde = "🟩";
              int letratablero=letra-1;

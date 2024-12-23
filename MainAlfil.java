@@ -16,6 +16,7 @@ public class MainAlfil {
 
         String movimientos=(Piezaalfil.PosicionesAlfil(tablero,letra,numero));
         tb.getTablero();
+
         System.out.println(movimientos);
     }
 }
