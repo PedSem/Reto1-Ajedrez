@@ -24,16 +24,17 @@ public class Alfil {
                 case 1://Diagonal hacia arriba por la izquierda
                     do{//Añado un bucle para contar las casillas en esa direccion
 
-                        tablero[posicionletraatras][posicionnumerodelante]=verde;//Marca las posiciones de los movimientos del alfil
-                        tb.setTablero(tablero);
+                        tablero[posicionletraatras][posicionnumerodelante]=verde;//Marca las coordenadas de los movimientos del alfil
+                        tb.setTablero(tablero);//Modifica el objeto tablero
 
-                        columnamovimientos=Tablero.NumeroToLetra(letra-1)+ "" + (numero+1) + ", ";//Muestra la columna que esta ahora el alfil en diagonal
+                        columnamovimientos=Tablero.NumeroToLetra(letra-1)+ "" + (numero+1) + ", ";//Declaro en String la posicion que se encuentra el alfil
 
-                        resultado=resultado+columnamovimientos;//Concateno todos los posibles movimientos
-
-                        letra--;//Simplifico la letra para que coja la siguiente en el tablero
-                        numero++;//Aumento el numero para que coja la siguiente en el tablero
-                        posicionletraatras--;//Simplifico y aumento aquellas posiciones que se van a marcar en diagonal
+                        resultado=resultado+columnamovimientos;//Concateno todos los posibles movimientos en esa direccion
+                        //Decremento y aumento la letra y el numero del tablero para poner la posicion en la que esta ahora
+                        letra--;
+                        numero++;
+                        //Decremento y aumento las posiciones donde va a ir el alfil
+                        posicionletraatras--;
                         posicionnumerodelante++;
 
                     }while (posicionletraatras>=0 && posicionnumerodelante<8);//Comprueba que no se pasa del limite del tablero
