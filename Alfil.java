@@ -123,6 +123,7 @@ public class Alfil {
 
         }else if(letra==1){ //Posibles movimientos del alfil en el borde izquierdo(sin esquinas)
             movimientosAlfil+=movimientoAlfil(3,letra,numero,tablero) + movimientoAlfil(9,letra,numero,tablero);
+
         }else if(numero==8){ //Posibles movimientos del alfil en el borde superior(sin esquinas)
             movimientosAlfil+=movimientoAlfil(7,letra,numero,tablero) + movimientoAlfil(9,letra,numero,tablero);
         }else{
