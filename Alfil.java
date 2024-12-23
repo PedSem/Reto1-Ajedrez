@@ -2,32 +2,7 @@
 //Falta comprobar que cuente todas las posiciones en el alfil
 public class Alfil {
     static Tablero tb=new Tablero();
-    public static String mostrarPosicionAlfil(String[][]tablero){
-        //Mostrar la posicion del tablero
-        String AlfilBlanco="♗";
-        for(int i=0;i< tablero.length;i++){
-            for(int j=0;j<tablero[i].length;j++){
-                if(tablero[j][i].equals(AlfilBlanco)){
-                    return "La posicion es " + columna(j + 1) + (i + 1);
-                }
-            }
-        }
-        return "Error";
-    }
-    public static char columna(int i){
-        return switch (i){
-            case 1->'a';
-            case 2->'b';
-            case 3->'c';
-            case 4->'d';
-            case 5->'e';
-            case 6->'f';
-            case 7->'g';
-            case 8->'h';
-            default -> 'x';
-        };
 
-    }
     public static String movimientoAlfil(int coordenada,int letra,int numero,String[][]tablero){
             String verde = "🟩";
              int letratablero=letra-1;
@@ -46,13 +21,12 @@ public class Alfil {
          */
             switch (coordenada){// Los posibles casos donde el alfil se mueva
                 case 1://Diagonal hacia arriba por la izquierda
-
                     do{//Añado un bucle para contar las casillas en esa direccion
 
                         tablero[posicionletraatras][posicionnumerodelante]=verde;//Marca las posiciones de los movimientos del alfil
                         tb.setTablero(tablero);
 
-                        columnamovimientos=columna(letra-1) + "" + (numero+1) + ",";//Muestra la columna que esta ahora el alfil en diagonal
+                        columnamovimientos=Tablero.NumeroToLetra(letra-1)+ "" + (numero+1) + ", ";//Muestra la columna que esta ahora el alfil en diagonal
 
                         resultado=resultado+columnamovimientos;//Concateno todos los posibles movimientos
 
@@ -66,12 +40,11 @@ public class Alfil {
                     return resultado;//Devuelve el resultado de esos movimientos del alfil en aquella dirección
 
                 case 3://Diagonal hacia arriba por la derecha
-
                      do{
 
                          tablero[posicionletradelante][posicionnumerodelante]=verde;
                          tb.setTablero(tablero);
-                         columnamovimientos=columna(letra+1) + "" + (numero+1) + ",";
+                         columnamovimientos=Tablero.NumeroToLetra(letra+1) + "" + (numero+1) + ", ";
                          letra++;
                          numero++;
                          posicionletradelante++;
@@ -81,11 +54,10 @@ public class Alfil {
                      return resultado;
 
                 case 7://Diagonal hacia abajo por la izquierda
-
                     do{
                         tablero[posicionletraatras][posicionnumeroatras]=verde;
                         tb.setTablero(tablero);
-                        columnamovimientos=columna(letra-1) + "" + (numero-1) + ",";
+                        columnamovimientos=Tablero.NumeroToLetra(letra-1) + "" + (numero-1) + ", ";
                         letra--;
                         numero--;
                         posicionletraatras--;
@@ -97,11 +69,10 @@ public class Alfil {
                    return resultado;
 
                 case 9://Diagonal hacia abajo por la derecha
-
                     do{
                         tablero[posicionletradelante][posicionnumeroatras]=verde;
                         tb.setTablero(tablero);
-                        columnamovimientos=columna(letra+1) + "" + (numero-1) + ",";
+                        columnamovimientos=Tablero.NumeroToLetra(letra+1) + "" + (numero-1) + ", ";
                         letra++;
                         numero--;
                         posicionletradelante++;
@@ -109,7 +80,6 @@ public class Alfil {
                         resultado = resultado +columnamovimientos;
 
                     }while (posicionnumeroatras>=0 && posicionletradelante<8);
-
                     return resultado;
 
                 default:
