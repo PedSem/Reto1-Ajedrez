@@ -1,11 +1,5 @@
-import java.util.Scanner;
-
 public class MovimientosRey {
     static Tablero tb = new Tablero();
-    public static int scanner() {
-        Scanner sc = new Scanner(System.in);
-        return sc.nextInt() - 1;
-    }
     public static String movimiento (int coordenada, int letra, int numero, String[][] tablero) {
         /*
         | 1 2 3 |
@@ -13,7 +7,7 @@ public class MovimientosRey {
         | 7 8 9 |
         X es la posicion del rey y los numero los posibles movimientos
          */
-        String verde = "🟩";
+        String verde = "\u001B[1m\u001B[42m · \u001B[0m";
         int letraTablero = letra - 1;
         int numeroTablero = numero - 1;
         switch (coordenada) {
@@ -55,7 +49,7 @@ public class MovimientosRey {
     }
     public static String Rey(String[][] tablero, int letra, int numero) {
         numero -= 1;
-        tablero[letra][numero] = "👑";
+        tablero[letra][numero] = "\u001B[1;30m\u001B[43m R \u001B[0m";
 
         String movimientos = "Posibles movimientos: ";
         letra += 1;
