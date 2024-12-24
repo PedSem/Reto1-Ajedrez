@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class MainAlfil {
@@ -11,12 +12,10 @@ public class MainAlfil {
         int numero= sc.nextInt();
         int letra=Tablero.LetraToNumero(letraString);
         Alfil Piezaalfil=new Alfil();
-
         tablero=tb.InicializarTablero();
 
         String movimientos=(Piezaalfil.PosicionesAlfil(tablero,letra,numero));
         tb.getTablero();
-
         System.out.println(movimientos);
     }
 }

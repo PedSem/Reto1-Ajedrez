@@ -5,7 +5,7 @@ public class Alfil {
 
 
     public static String movimientoAlfil(int coordenada,int letra,int numero,String[][]tablero){
-            String verde = "🟩";
+            String verde = "\u001B[1m\u001B[42m · \u001B[0m";
              int letratablero=letra-1;
              int numerotablero=numero-1;
              int posicionletraatras=letratablero-1;
@@ -97,7 +97,11 @@ public class Alfil {
     public static String PosicionesAlfil(String[][]tablero,int letra,int numero){
         String movimientosAlfil="Posibles movimientos: ";
         numero-=1;
-        tablero[letra][numero]="♗";
+        if((letra+numero)%2==0){
+            tablero[letra][numero]="\u001B[38;5;231m\u001B[43m A \u001B[0m";
+        }else{
+            tablero[letra][numero]="\u001B[1;30m\u001B[43m A \u001B[0m";
+        }
 
         letra+=1;
         numero+=1;
