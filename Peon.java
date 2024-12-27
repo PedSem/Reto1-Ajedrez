@@ -1,13 +1,5 @@
-import java.util.Scanner;
-
 public class Peon {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Letra: ");
-        String letraString = sc.next();
-        System.out.print("num: ");
-        int numero = sc.nextInt();
-
+    public static void Peon(String letraString, int numero, String color) {
         Tablero tb = new Tablero();
         String[][] tablero;
 
@@ -16,7 +8,7 @@ public class Peon {
 
         tablero = tb.InicializarTablero(); // Inicializa tablero en negro y blanco
 
-        String movimientos = (MovimientosPeon.Peon(tablero, letra, numero)); // Guarda los posibles movimientos en un String para mostrarlos después
+        String movimientos = (MovimientosPeon.Peon(tablero, letra, numero, color)); // Guarda los posibles movimientos en un String para mostrarlos después
 
         tb.getTablero(); // Imprime el tablero modificado
         System.out.println(movimientos); // Imprime los posibles movimientos

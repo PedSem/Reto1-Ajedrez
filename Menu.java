@@ -22,7 +22,7 @@ public class Menu {
                         (A)lfil
                         (C)aballo
                         (P)eón""");
-                System.out.print("Introduce la letra inicial de la pieza con la que vas a jugar: ");
+                System.out.print("Introduce la pieza con la que vas a jugar: ");
                 pieza = sc.nextLine().toUpperCase(); // Pone minúsculas en mayúsculas
                 System.out.println(); //Para dejar espacio con la respuesta
 
@@ -52,7 +52,7 @@ public class Menu {
                         nombrePieza = "Peón";
                         break;
                     default:
-                        System.out.println("No existe esa pieza. Por favor, elige una válida.");
+                        System.out.println("No existe esa pieza. Por favor, elige una válida y asegurate de solo poner la inicial");
                         System.out.println();
                         pieza = ""; // Reiniciar la selección
                         break;
@@ -73,7 +73,7 @@ public class Menu {
                 System.out.println("""
                         (B)lanco
                         (N)egro""");
-                System.out.print("Introduce la letra inicial del color de la pieza con la que vas a jugar: ");
+                System.out.print("Introduce el color de la pieza: ");
                 color = sc.nextLine().toUpperCase(); // Pone minúsculas en mayúsculas
                 System.out.println();
 
@@ -103,16 +103,17 @@ public class Menu {
                 System.out.println("====================================");
                 System.out.println("          Selección de Posición     ");
                 System.out.println("====================================");
-                System.out.print("Introduce la posición en la que se encuentra la pieza ([a-h][1-8], Ej. b4): ");
-                System.out.println();
+                System.out.print("Introduce la posición de la pieza (Ej. b4): ");
+
                 posicion = sc.nextLine().toLowerCase(); // Para que las mayusculas se pongan en minusculas
 
-                if (posicion.length() == 2) {
-                    char letra = posicion.charAt(0); // La letra siempre está en la primera posición
-                    char numero = posicion.charAt(1); // El número siempre está en la segunda posición
 
-                    // Verificar si letra y número están en los rangos correctos
-                    if (letra >= 'a' && letra <= 'h' && numero >= '1' && numero <= '8') {
+                if (posicion.length() == 2) {
+                    char letraValidacion = posicion.charAt(0); // La letraValidacion siempre está en la primera posición
+                    char numeroValidacion = posicion.charAt(1); // El número siempre está en la segunda posición
+
+                    // Verificar si letraValidacion y número están en los rangos correctos
+                    if (letraValidacion >= 'a' && letraValidacion <= 'h' && numeroValidacion >= '1' && numeroValidacion <= '8') {
                         posicionValida = true; // Entrada válida, salir del bucle
                     } else {
                         System.out.println("Las coordenadas que has introducido son incorrectas. Inténtalo de nuevo.");
@@ -139,6 +140,34 @@ public class Menu {
         System.out.println("Posición: " + posicion);
         System.out.println("====================================");
 
+        String letra = String.valueOf(posicion.charAt(0)); // Valor letra para enviar al tablero
+        String numeroMomentaneo = String.valueOf(posicion.charAt(1)); // Valor numero para enviar al tablero
+        int numero = Integer.parseInt(numeroMomentaneo);
 
+        System.out.println();
+        switch (pieza) {
+            case "R":
+                Rey.Rey(letra, numero);
+                break;
+            case "D":
+
+                break;
+            case "T":
+
+                break;
+            case "A":
+
+                break;
+            case "C":
+
+                break;
+            case "P":
+                Peon.Peon(letra, numero, color);
+                break;
+            default:
+                System.out.println("No existe esa pieza. Por favor, elige una válida.");
+                System.out.println();
+                break;
+        }
     }
 }
