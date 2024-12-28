@@ -14,7 +14,6 @@ public class Dama {
         // La letra que introduces es visual y hay que volver a ponerla como numero.
         int letra = Tablero.LetraToNumero(letraString);
 
-        MovimientosDama dama = new MovimientosDama();
 
         tablero = tb.InicializarTablero();
         String movimientos = (MovimientosDama.DamaOpciones(tablero,letra,numero));

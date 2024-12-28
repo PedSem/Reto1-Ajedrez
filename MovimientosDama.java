@@ -1,98 +1,64 @@
 public class MovimientosDama {
     static Tablero tb = new Tablero();
-    public static String movimiento (int cordenada, int letra, int numero, String[][] tablero){
+    public static String movimiento (int letra, int numero, String[][] tablero){
         String verde = "\u001B[1m\u001B[42m · \u001B[0m";
         int letraTablero = letra - 1;
         int numeroTablero = numero - 1;
-        int delanteLetra = letraTablero;
-        int delanteNumero = numeroTablero;
+        String cordenadas;
 
-        switch (cordenada){
-            case 1:
-                int LETRA = letraTablero;
-                int NUMERO = numeroTablero;
+                if (letraTablero == 0 && numeroTablero == 0) { // Esquina Inferior Izquierda
+                    HaciaDelante(numeroTablero, letraTablero, tablero, verde);
+                    HaciaDerecha(numeroTablero, letraTablero, tablero, verde);
+                    diagonalArribaDerecha(letraTablero, numeroTablero, tablero, verde);
+                    cordenadas = posiciones(tablero,verde);
 
-                for (int Atras = NUMERO -1 ; Atras >= 0;Atras--) {
-                    tablero[LETRA][Atras] = verde;
-                    tb.setTablero(tablero);
+                } else if (letraTablero == 0 && numeroTablero == tablero.length -1) { // Esquina Superior Izquierda
+                    HaciaAtras(numeroTablero, letraTablero, tablero, verde);
+                    HaciaDerecha(numeroTablero, letraTablero, tablero, verde);
+                    diagonalBajoDerecha(letraTablero, numeroTablero, tablero, verde);
+                    cordenadas = posiciones(tablero,verde);
+
+                } else if (letraTablero == tablero.length -1 && numeroTablero == 0) { //Esquina Inferior Derecha
+                    HaciaDelante(numeroTablero, letraTablero, tablero, verde);
+                    HaciaIzquierda(numeroTablero, letraTablero, tablero, verde);
+                    diagonalArribaIzquierda(letraTablero, numeroTablero, tablero, verde);
+                    cordenadas = posiciones(tablero,verde);
+
+                } else if (letraTablero == tablero.length -1 && numeroTablero == tablero.length -1) { //Esquina Superior Derecha
+                    HaciaAtras(numeroTablero, letraTablero, tablero, verde);
+                    HaciaIzquierda(numeroTablero, letraTablero, tablero, verde);
+                    diagonalBajoIzquierda(letraTablero, numeroTablero, tablero, verde);
+                    cordenadas = posiciones(tablero,verde);
+
+                } else if (letraTablero == 0) {
+                    HaciaDelante(numeroTablero, letraTablero, tablero, verde);
+                    HaciaAtras(numeroTablero, letraTablero, tablero, verde);
+                    HaciaDerecha(numeroTablero, letraTablero, tablero, verde);
+                    diagonalArribaDerecha(letraTablero, numeroTablero, tablero, verde);
+                    diagonalBajoDerecha(letraTablero, numeroTablero, tablero, verde);
+                    cordenadas = posiciones(tablero,verde);
+
+                } else if (letraTablero == tablero.length -1) {
+                    HaciaDelante(numeroTablero, letraTablero, tablero, verde);
+                    HaciaAtras(numeroTablero, letraTablero, tablero, verde);
+                    HaciaIzquierda(numeroTablero, letraTablero, tablero, verde);
+                    diagonalArribaIzquierda(letraTablero, numeroTablero, tablero, verde);// ↖
+                    diagonalBajoIzquierda(letraTablero, numeroTablero, tablero, verde); // ↙
+                    cordenadas = posiciones(tablero,verde);
+
+                } else {
+                    HaciaDelante(numeroTablero, letraTablero, tablero, verde); // ⬆
+                    HaciaAtras(numeroTablero, letraTablero, tablero, verde);  // ⬇
+                    HaciaDerecha(numeroTablero, letraTablero, tablero, verde); // ➡
+                    HaciaIzquierda(numeroTablero, letraTablero, tablero, verde); // ⬅
+                    diagonalArribaDerecha(letraTablero, numeroTablero, tablero, verde);// ↗
+                    diagonalBajoDerecha(letraTablero, numeroTablero, tablero, verde);// ↘
+                    diagonalArribaIzquierda(letraTablero, numeroTablero, tablero, verde);// ↖
+                    diagonalBajoIzquierda(letraTablero, numeroTablero, tablero, verde); // ↙
+                    cordenadas = posiciones(tablero,verde);
                 }
-                for ( int Arriba = NUMERO  + 1; Arriba < tablero.length;Arriba++){
-                    tablero[LETRA][Arriba] = verde;
-                    tb.setTablero(tablero);
-                }
-                for (int Derecha = LETRA + 1; Derecha <= tablero.length -1 ; Derecha++){
-                    tablero[Derecha][NUMERO] = verde;
-                    tb.setTablero(tablero);
-                }
-                for (int Izquierda = LETRA - 1; Izquierda >= 0; Izquierda--){
-                    tablero[Izquierda][NUMERO] = verde;
-                    tb.setTablero(tablero);
-                }
-                //Delante derecha
-                do {
-                    int i = delanteLetra;
-                    int j = delanteNumero;
-                    delanteLetra++;
-                    delanteNumero++;
-                    i++;
-                    j++;
-                    tablero[i][j] = verde;
-                    tb.setTablero(tablero);
-                } while (delanteLetra < tablero.length-1 && delanteNumero < tablero.length-1);
-                delanteLetra = letraTablero;
-                delanteNumero = numeroTablero;
+                return cordenadas;
 
-                //Delante izquierda
-                do {
-                    int i = delanteLetra;
-                    int j = delanteNumero;
-                    delanteLetra--;
-                    delanteNumero++;
-                    i--;
-                    j++;
-                    tablero[i][j] = verde;
-                    tb.setTablero(tablero);
-                } while (delanteLetra > 0 && delanteNumero < tablero.length - 1);
-                delanteLetra = letraTablero;
-                delanteNumero = numeroTablero;
-
-                //Detras izquierda
-                do {
-                    int i = delanteLetra;
-                    int j = delanteNumero;
-                    delanteLetra--;
-                    delanteNumero--;
-                    i--;
-                    j--;
-                    tablero[i][j] = verde;
-                    tb.setTablero(tablero);
-                }while (delanteLetra > 0 && delanteNumero > 0);
-                delanteLetra = letraTablero;
-                delanteNumero = numeroTablero;
-
-                //Detras derecha
-                do {
-                    int i = delanteLetra;
-                    int j = delanteNumero;
-                    delanteLetra++;
-                    delanteNumero--;
-                    i++;
-                    j--;
-                    tablero[i][j] = verde;
-                    tb.setTablero(tablero);
-                }while (delanteLetra < tablero.length-1 && delanteNumero > 0);
-
-                return Tablero.NumeroToLetra(letra - 1) + "" + (numero + 1) + ", ";
-//            case 2:
-//            case 3:
-//            case 4:
-//            case 6:
-//            case 7:
-//            case 8:
-//            case 9:
-               default:
-                return "Error";
-        }
     }
     public static String DamaOpciones (String[][] tablero, int letra, int numero){
 
@@ -103,11 +69,104 @@ public class MovimientosDama {
         numero += 1;
         letra +=1;
 
-        if (letra != 1 && numero != 1 && letra != 8 && numero != 8){
-            movimientos +=movimiento(1,letra,numero,tablero);
-        } else if (letra == 1 && numero == 1) {
+            movimientos += movimiento(letra,numero,tablero);
 
-        }
         return movimientos;
     }
+
+    public static void HaciaAtras(int numeroTablero,int letraTablero,String[][] tablero,String verde){
+        for (int Atras = numeroTablero -1 ; Atras >= 0;Atras--) {
+            tablero[letraTablero][Atras] = verde;
+            tb.setTablero(tablero);
+        }
+    }
+
+    public static void HaciaDelante(int numeroTablero,int letraTablero,String[][] tablero,String verde){
+        for ( int Arriba = numeroTablero  + 1; Arriba < tablero.length;Arriba++){
+            tablero[letraTablero][Arriba] = verde;
+            tb.setTablero(tablero);
+        }
+    }
+
+    public static void HaciaDerecha(int numeroTablero,int letraTablero,String[][] tablero,String verde){
+        for (int Derecha = letraTablero + 1; Derecha <= tablero.length -1 ; Derecha++){
+            tablero[Derecha][numeroTablero] = verde;
+            tb.setTablero(tablero);
+        }
+    }
+
+    public static void HaciaIzquierda(int numeroTablero,int letraTablero,String[][] tablero,String verde){
+        for (int Izquierda = letraTablero - 1; Izquierda >= 0; Izquierda--){
+            tablero[Izquierda][numeroTablero] = verde;
+            tb.setTablero(tablero);
+        }
+    }
+
+    public static void diagonalBajoDerecha(int letraTablero,int numeroTablero,String[][] tablero,String verde){
+        do {
+            int i = letraTablero;
+            int j = numeroTablero;
+            letraTablero++;
+            numeroTablero--;
+            i++;
+            j--;
+            tablero[i][j] = verde;
+            tb.setTablero(tablero);
+        }while (letraTablero < tablero.length-1 && numeroTablero > 0);
+
+    }
+
+    public static void diagonalArribaDerecha(int letraTablero,int numeroTablero,String[][] tablero,String verde){
+        do {
+            int i = letraTablero;
+            int j = numeroTablero;
+            letraTablero++;
+            numeroTablero++;
+            i++;
+            j++;
+            tablero[i][j] = verde;
+            tb.setTablero(tablero);
+        } while (letraTablero < tablero.length -1 && numeroTablero < tablero.length -1);
+
+    }
+
+    public static void diagonalBajoIzquierda(int letraTablero,int numeroTablero,String[][] tablero,String verde){
+        do {
+            int i = letraTablero;
+            int j = numeroTablero;
+            letraTablero--;
+            numeroTablero--;
+            i--;
+            j--;
+            tablero[i][j] = verde;
+            tb.setTablero(tablero);
+        }while (letraTablero > 0 && numeroTablero > 0);
+    }
+
+    public static void diagonalArribaIzquierda(int letraTablero,int numeroTablero,String[][] tablero,String verde){
+        do {
+            int i = letraTablero;
+            int j = numeroTablero;
+            letraTablero--;
+            numeroTablero++;
+            i--;
+            j++;
+            tablero[i][j] = verde;
+            tb.setTablero(tablero);
+        } while (letraTablero > 0 && numeroTablero < tablero.length - 1);
+    }
+
+    public static String posiciones(String[][] tablero,String verde){
+        String posicion = "";
+        for (int i = 0; i < tablero.length ; i++){
+            for (int j = 0; j < tablero[i].length  ; j++){
+                if (tablero[i][j].equals(verde)){
+                    int fila = i + 1;
+                    int columna = j + 1;
+                    posicion += Tablero.NumeroToLetra(fila) + "" + columna + ", ";
+                }
+            }
+        }
+        return posicion;
+    } //Guarda en que cordenadas estan las casillas verdes
 }
