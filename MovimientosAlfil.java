@@ -96,7 +96,11 @@ public class MovimientosAlfil {
     public static String PosicionesAlfil(String[][]tablero,int letra,int numero,String color){
         String movimientosAlfil="Posibles movimientos: ";
         numero-=1;
-            tablero[letra][numero]="\u001B[1;30m\u001B[43m A \u001B[0m";
+        if(color.equals("B")){
+            tablero[letra][numero]="\u001B[1;30m\u001B[43m ♗ \u001B[0m";
+        }else{
+            tablero[letra][numero]="\u001B[1;30m\u001B[43m ♝ \u001B[0m";
+        }
         letra+=1;
         numero+=1;
         if(color.equals("B") && ((letra+numero)%2!=0)){ //Condicion para que se mueva solo en blancas o negras
