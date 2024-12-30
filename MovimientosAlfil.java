@@ -23,18 +23,22 @@ public class MovimientosAlfil {
                 case 1://Diagonal hacia arriba por la izquierda
                     do{//Añado un bucle para contar las casillas en esa direccion
 
+
                         tablero[posicionletraatras][posicionnumerodelante]=verde;//Marca las coordenadas de los movimientos del alfil
                         tb.setTablero(tablero);//Modifica el objeto tablero
 
-                        columnamovimientos=Tablero.NumeroToLetra(letra-1)+ "" + (numero+1) + ", ";//Declaro en String la posicion que se encuentra el alfil
+                        columnamovimientos=Tablero.NumeroToLetra(letra-1)+ "" + (numero+1) + ", ";//Declaro en String la posicion en que se encuentra el alfil
 
-                        resultado=resultado+columnamovimientos;//Concateno todos los posibles movimientos en esa direccion
+                        resultado+=columnamovimientos;//Concateno todos los posibles movimientos en esa direccion
                         //Decremento y aumento la letra y el numero del tablero para poner la posicion en la que esta ahora
                         letra--;
                         numero++;
-                        //Decremento y aumento las posiciones donde va a ir el alfil
+                        //Decremento y aumento las posiciones hacia donde va a ir el alfil
                         posicionletraatras--;
                         posicionnumerodelante++;
+
+
+
 
                     }while (posicionletraatras>=0 && posicionnumerodelante<8);//Comprueba que no se pasa del limite del tablero
 
@@ -50,7 +54,7 @@ public class MovimientosAlfil {
                          numero++;
                          posicionletradelante++;
                          posicionnumerodelante++;
-                         resultado=resultado + columnamovimientos;
+                         resultado+=columnamovimientos;
                      }while ( posicionletradelante<8 && posicionnumerodelante<8);
                      return resultado;
 
@@ -63,7 +67,7 @@ public class MovimientosAlfil {
                         numero--;
                         posicionletraatras--;
                         posicionnumeroatras--;
-                        resultado=resultado + columnamovimientos;
+                        resultado+=columnamovimientos;
 
                     }while ( posicionnumeroatras>=0 && posicionletraatras>=0);
 
@@ -78,7 +82,7 @@ public class MovimientosAlfil {
                         numero--;
                         posicionletradelante++;
                         posicionnumeroatras--;
-                        resultado = resultado +columnamovimientos;
+                        resultado+=columnamovimientos;
 
                     }while (posicionnumeroatras>=0 && posicionletradelante<8);
                     return resultado;
