@@ -7,20 +7,20 @@ public class MainTorre {
 
         Scanner sc = new Scanner(System.in);
         System.out.print("Letra: ");
-        String letraString = sc.nextLine(); // Esto es la coordenada de las letras
+        String letraString = sc.nextLine(); // Coordenada de las letras
         System.out.print("Número: ");
-        int numero = sc.nextInt(); // Esto es la coordenada de los números
+        int numero = sc.nextInt(); // Coordenada de los números
 
         // La letra que introduces es visual y hay que convertirla en número
         int letra = Tablero.LetraToNumero(letraString);
 
         Torre torre = new Torre();
 
-        tablero = tb.InicializarTablero(); // Inicializa el tablero en blanco y negro
+        tablero = tb.InicializarTablero(); // Inicializa el tablero
 
         String movimientos = Torre.PosicionesTorre(tablero, letra, numero); // Calcula los posibles movimientos
 
-        tb.getTablero(); // Imprime el tablero modificado
+        tb.getTablero(); // Imprime el tablero ya modificado
         System.out.println(movimientos); // Imprime los posibles movimientos
     }
 }
