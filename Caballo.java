@@ -1,5 +1,5 @@
 public class Caballo {
-    public static void Caballo(String letraString, int numero) {
+    public static void PiezaCaballo(String letraString, int numero) {
         Tablero tb = new Tablero(); // Crear una instancia del tablero
         String[][] tablero;
 

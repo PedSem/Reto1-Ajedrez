@@ -1,5 +1,5 @@
 public class Peon {
-    public static void Peon(String letraString, int numero, String color) {
+    public static void PiezaPeon(String letraString, int numero, String color) {
         Tablero tb = new Tablero();
         String[][] tablero;
 

@@ -147,22 +147,22 @@ public class Menu {
         System.out.println();
         switch (pieza) {
             case "R":
-                Rey.Rey(letra, numero);
+                Rey.PiezaRey(letra, numero);
                 break;
             case "D":
-
+                Dama.PiezaDama(letra, numero);
                 break;
             case "T":
-
+                Torre.PiezaTorre(letra, numero);
                 break;
             case "A":
-
+                Alfil.PiezaAlfil(letra, numero);
                 break;
             case "C":
-                Caballo.Caballo(letra, numero);
+                Caballo.PiezaCaballo(letra, numero);
                 break;
             case "P":
-                Peon.Peon(letra, numero, color);
+                Peon.PiezaPeon(letra, numero, color);
                 break;
             default:
                 System.out.println("No existe esa pieza. Por favor, elige una válida.");
