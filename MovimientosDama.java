@@ -7,46 +7,62 @@ public class MovimientosDama {
         String cordenadas;
 
                 if (letraTablero == 0 && numeroTablero == 0) { // Esquina Inferior Izquierda
-                    HaciaDelante(numeroTablero, letraTablero, tablero, verde);
-                    HaciaDerecha(numeroTablero, letraTablero, tablero, verde);
-                    diagonalArribaDerecha(letraTablero, numeroTablero, tablero, verde);
+                    HaciaDelante(numeroTablero, letraTablero, tablero, verde); // ⬆
+                    HaciaDerecha(numeroTablero, letraTablero, tablero, verde); // ➡
+                    diagonalArribaDerecha(letraTablero, numeroTablero, tablero, verde); // ↗
                     cordenadas = posiciones(tablero,verde);
 
                 } else if (letraTablero == 0 && numeroTablero == tablero.length -1) { // Esquina Superior Izquierda
-                    HaciaAtras(numeroTablero, letraTablero, tablero, verde);
-                    HaciaDerecha(numeroTablero, letraTablero, tablero, verde);
-                    diagonalBajoDerecha(letraTablero, numeroTablero, tablero, verde);
+                    HaciaAtras(numeroTablero, letraTablero, tablero, verde); // ⬇
+                    HaciaDerecha(numeroTablero, letraTablero, tablero, verde); // ➡
+                    diagonalBajoDerecha(letraTablero, numeroTablero, tablero, verde); // ↘
                     cordenadas = posiciones(tablero,verde);
 
                 } else if (letraTablero == tablero.length -1 && numeroTablero == 0) { //Esquina Inferior Derecha
-                    HaciaDelante(numeroTablero, letraTablero, tablero, verde);
-                    HaciaIzquierda(numeroTablero, letraTablero, tablero, verde);
-                    diagonalArribaIzquierda(letraTablero, numeroTablero, tablero, verde);
+                    HaciaDelante(numeroTablero, letraTablero, tablero, verde); // ⬆
+                    HaciaIzquierda(numeroTablero, letraTablero, tablero, verde); // ⬅
+                    diagonalArribaIzquierda(letraTablero, numeroTablero, tablero, verde);// ↖
                     cordenadas = posiciones(tablero,verde);
 
                 } else if (letraTablero == tablero.length -1 && numeroTablero == tablero.length -1) { //Esquina Superior Derecha
-                    HaciaAtras(numeroTablero, letraTablero, tablero, verde);
-                    HaciaIzquierda(numeroTablero, letraTablero, tablero, verde);
-                    diagonalBajoIzquierda(letraTablero, numeroTablero, tablero, verde);
-                    cordenadas = posiciones(tablero,verde);
-
-                } else if (letraTablero == 0) {
-                    HaciaDelante(numeroTablero, letraTablero, tablero, verde);
-                    HaciaAtras(numeroTablero, letraTablero, tablero, verde);
-                    HaciaDerecha(numeroTablero, letraTablero, tablero, verde);
-                    diagonalArribaDerecha(letraTablero, numeroTablero, tablero, verde);
-                    diagonalBajoDerecha(letraTablero, numeroTablero, tablero, verde);
-                    cordenadas = posiciones(tablero,verde);
-
-                } else if (letraTablero == tablero.length -1) {
-                    HaciaDelante(numeroTablero, letraTablero, tablero, verde);
-                    HaciaAtras(numeroTablero, letraTablero, tablero, verde);
-                    HaciaIzquierda(numeroTablero, letraTablero, tablero, verde);
-                    diagonalArribaIzquierda(letraTablero, numeroTablero, tablero, verde);// ↖
+                    HaciaAtras(numeroTablero, letraTablero, tablero, verde); // ⬇
+                    HaciaIzquierda(numeroTablero, letraTablero, tablero, verde); // ⬅
                     diagonalBajoIzquierda(letraTablero, numeroTablero, tablero, verde); // ↙
                     cordenadas = posiciones(tablero,verde);
 
-                } else {
+                } else if (letraTablero == 0) { //Lateral izquierdo
+                    HaciaDelante(numeroTablero, letraTablero, tablero, verde); // ⬆
+                    HaciaAtras(numeroTablero, letraTablero, tablero, verde); // ⬇
+                    HaciaDerecha(numeroTablero, letraTablero, tablero, verde); // ➡
+                    diagonalArribaDerecha(letraTablero, numeroTablero, tablero, verde); // ↗
+                    diagonalBajoDerecha(letraTablero, numeroTablero, tablero, verde); // ↘
+                    cordenadas = posiciones(tablero,verde);
+
+                } else if (letraTablero == tablero.length -1) { //Lateral derecho
+                    HaciaDelante(numeroTablero, letraTablero, tablero, verde); // ⬆
+                    HaciaAtras(numeroTablero, letraTablero, tablero, verde); // ⬇
+                    HaciaIzquierda(numeroTablero, letraTablero, tablero, verde); // ⬅
+                    diagonalArribaIzquierda(letraTablero, numeroTablero, tablero, verde); // ↖
+                    diagonalBajoIzquierda(letraTablero, numeroTablero, tablero, verde); // ↙
+                    cordenadas = posiciones(tablero, verde);
+
+                } else if (numeroTablero == 0) { //Parte inferior
+                    HaciaDelante(numeroTablero, letraTablero, tablero, verde);// ⬆
+                    HaciaIzquierda(numeroTablero, letraTablero, tablero, verde); // ⬅
+                    HaciaDerecha(numeroTablero, letraTablero, tablero, verde);// ➡
+                    diagonalArribaIzquierda(letraTablero, numeroTablero, tablero, verde);// ↖
+                    diagonalArribaDerecha(letraTablero, numeroTablero, tablero, verde); // ↗
+                    cordenadas = posiciones(tablero, verde);
+
+                } else if (numeroTablero == tablero.length -1) { //Parte superior
+                    HaciaAtras(numeroTablero, letraTablero, tablero, verde);  // ⬇
+                    HaciaDerecha(numeroTablero, letraTablero, tablero, verde); // ➡
+                    HaciaIzquierda(numeroTablero, letraTablero, tablero, verde); // ⬅
+                    diagonalBajoDerecha(letraTablero, numeroTablero, tablero, verde);// ↘
+                    diagonalBajoIzquierda(letraTablero, numeroTablero, tablero, verde); // ↙
+                    cordenadas = posiciones(tablero, verde);
+
+                } else { //Centro del tablero
                     HaciaDelante(numeroTablero, letraTablero, tablero, verde); // ⬆
                     HaciaAtras(numeroTablero, letraTablero, tablero, verde);  // ⬇
                     HaciaDerecha(numeroTablero, letraTablero, tablero, verde); // ➡
