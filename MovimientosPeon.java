@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class MovimientosPeon {
     static Tablero tb = new Tablero();
     public static String movimiento (int opcion, int letra, int numero, String[][] tablero) {
@@ -40,15 +42,60 @@ public class MovimientosPeon {
         }
     }
     public static String Peon(String[][] tablero, int letra, int numero, String color) {
+        Scanner sc = new Scanner(System.in);
         numero -= 1;
-        tablero[letra][numero] = "\u001B[1;30m\u001B[43m P \u001B[0m"; // define posicion de la pieza
+
+        if ((color.equals("B") && numero == 8) || (color.equals("N") && numero == 1)) {
+            System.out.print("""
+                    (D)ama
+                    (T)orre
+                    (A)lfil
+                    (C)aballo
+                    En que pieza te conviertes? """);
+            String pieza = sc.nextLine().toUpperCase(); // Pone minúsculas en mayúsculas
+            System.out.println(); //Para dejar espacio con la respuesta
+
+            while (!(pieza.equals("D") && pieza.equals("T") && pieza.equals("A") && pieza.equals("C"))) {
+                switch (pieza) {
+                    case "D":
+                        System.out.println("Has escogido la Dama.");
+                        tablero[letra][numero] = "\u001B[1;30m\u001B[43m D \u001B[0m"; // define posicion de la pieza
+                        break;
+                    case "T":
+                        System.out.println("Has escogido la Torre.");
+                        tablero[letra][numero] = "\u001B[1;30m\u001B[43m T \u001B[0m"; // define posicion de la pieza
+                        break;
+                    case "A":
+                        System.out.println("Has escogido el Alfil");
+                        tablero[letra][numero] = "\u001B[1;30m\u001B[43m A \u001B[0m"; // define posicion de la pieza
+                        break;
+                    case "C":
+                        System.out.println("Has escogido el Caballo.");
+                        tablero[letra][numero] = "\u001B[1;30m\u001B[43m C \u001B[0m"; // define posicion de la pieza
+                        break;
+                    default:
+                        System.out.println("No existe esa pieza. Por favor, elige una válida y asegurate de solo poner la inicial");
+                        System.out.print("""
+                            (D)ama
+                            (T)orre
+                            (A)lfil
+                            (C)aballo
+                            En que pieza te conviertes? """);
+                        pieza = sc.next(); // Reiniciar la selección
+                }
+            }
+
+        } else tablero[letra][numero] = "\u001B[1;30m\u001B[43m P \u001B[0m"; // define posicion de la pieza
+
 
         String movimientos = "Posibles movimientos: ";
         letra += 1;
         numero += 1;
 
-        if (numero == 1 || numero == 8) {
-            return "Error, un peón nunca puede situarse ni mover en la fila 1 u 8";
+        if (color.equals("B") && numero == 1) {
+            return "Error, un peón blanco no puede situarse en la coordenada con numero 1";
+        } else if (color.equals("N") && numero == 8) {
+            return "Error, un peón negro no puede situarse en la coordenada con numero 8";
         } else if (color.equals("B")) {
             if (numero == 2) {
                 movimientos += movimiento(2, letra, numero, tablero);

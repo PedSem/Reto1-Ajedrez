@@ -1,5 +1,5 @@
 public class Rey {
-    public static void Rey(String letraString, int numero) {
+    public static void PiezaRey(String letraString, int numero) {
 
         Tablero tb = new Tablero();
         String[][] tablero;
