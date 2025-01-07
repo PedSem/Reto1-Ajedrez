@@ -1,5 +1,4 @@
 public class Tablero {
-
     private String[][] tablero = new String[8][8];
 
     public void setTablero(String[][] tablero) {
