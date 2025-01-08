@@ -10,7 +10,10 @@ public class Peon {
 
         String movimientos = (MovimientosPeon.Peon(tablero, letra, numero, color)); // Guarda los posibles movimientos en un String para mostrarlos después
 
-        tb.getTablero(); // Imprime el tablero modificado
+        if (numero != 1 && numero!= 8){
+            tb.getTablero(); // Imprime el tablero modificado si la coordenada número no es 1 u 8.
+        }
+
         System.out.println(movimientos); // Imprime los posibles movimientos
     }
 }
