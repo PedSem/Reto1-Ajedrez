@@ -10,7 +10,7 @@ public class Caballo {
         tablero = tb.InicializarTablero();
 
         // Obtener los movimientos posibles del caballo como un String
-        String movimientos = Caballo(tablero, letra, numero);
+        String movimientos = posiblesMovimientosCaballo(tablero, letra, numero);
 
         tb.getTablero(); // Imprime el tablero actualizado
         System.out.println(movimientos); // Imprime los posibles movimientos del caballo
@@ -68,7 +68,7 @@ public class Caballo {
 
 
     //Metodo principal que calcula todos los movimientos posibles del caballo desde su posición actual
-    public static String Caballo(String[][] tablero, int letra, int numero) {
+    public static String posiblesMovimientosCaballo(String[][] tablero, int letra, int numero) {
         // Ajusta la posición actual del caballo en el tablero (se muestra como "C").
         numero -= 1; // Ajuste al índice de array que es 0.
         tablero[letra][numero] = "\u001B[1;30m\u001B[43m C \u001B[0m";
@@ -94,4 +94,3 @@ public class Caballo {
         return movimientos;
     }
 }
-
