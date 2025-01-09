@@ -16,12 +16,12 @@ public class Menu {
                 System.out.println("          Selección de Piezas:      ");
                 System.out.println("====================================");
                 System.out.println("""
-                        (R)ey
-                        (D)ama
-                        (T)orre
-                        (A)lfil
-                        (C)aballo
-                        (P)eón""");
+                        (R)ey ♚
+                        (D)ama ♛
+                        (T)orre ♜
+                        (A)lfil ♝
+                        (C)aballo ♞
+                        (P)eón ♟""");
                 System.out.print("Introduce la pieza con la que vas a jugar: ");
                 pieza = sc.nextLine().toUpperCase(); // Pone minúsculas en mayúsculas
                 System.out.println(); //Para dejar espacio con la respuesta
