@@ -60,6 +60,6 @@ public class Torre {
         movimientos += MovimientosTorre(letra, numero, tablero, 1, 0); // Movimientos hacia la derecha
         movimientos += MovimientosTorre(letra, numero, tablero, -1, 0); // Movimientos hacia la izquierda
 
-        return movimientos;
+        return Tablero.QuitarComa(movimientos);
     }
 }

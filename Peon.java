@@ -38,7 +38,7 @@ public class Peon {
                 String coordenadasMovimientosFinales = "";
                 for (int i = 1; i <= 2; i++) {
                     tablero[letraTablero][numeroTablero + i] = verde;
-                    coordenadasMovimientosFinales = Tablero.NumeroToLetra(letra) + "" + (numero + i) + ", ";
+                    coordenadasMovimientosFinales += Tablero.NumeroToLetra(letra) + "" + (numero + i) + ", ";
                 }
                 tb.setTablero(tablero);
                 return coordenadasMovimientosFinales;
@@ -50,7 +50,7 @@ public class Peon {
                 coordenadasMovimientosFinales = "";
                 for (int i = 1; i <= 2; i++) {
                     tablero[letraTablero][numeroTablero - i] = verde;
-                    coordenadasMovimientosFinales = Tablero.NumeroToLetra(letra) + "" + (numero + i) + ", ";
+                    coordenadasMovimientosFinales += Tablero.NumeroToLetra(letra) + "" + (numero - i) + ", ";
                 }
                 tb.setTablero(tablero);
                 return coordenadasMovimientosFinales;
@@ -140,6 +140,6 @@ public class Peon {
             }
         }
 
-        return movimientos; // Movimientos que puede hacer.
+        return Tablero.QuitarComa(movimientos); // Movimientos que puede hacer.
     }
 }

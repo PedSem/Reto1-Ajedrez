@@ -91,4 +91,13 @@ public class Tablero {
             default -> "x";
         };
     }
+
+    public static String QuitarComa(String movimientos) {
+        if (movimientos.endsWith(", ")) {
+            // Si el último carácter es una coma, crea un nuevo string sin ella
+            movimientos = movimientos.substring(0, movimientos.length() - 2);
+        }
+
+        return movimientos;
+    }
 }

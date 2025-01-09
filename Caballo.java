@@ -91,6 +91,6 @@ public class Caballo {
         if (letra > 2 && numero < 8) movimientos += movimiento(8, letra, numero, tablero); // Movimiento 8
 
         // Devuelve todos los movimientos válidos.
-        return movimientos;
+        return Tablero.QuitarComa(movimientos);
     }
 }

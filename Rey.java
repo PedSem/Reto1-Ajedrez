@@ -117,6 +117,6 @@ public class Rey {
             movimientos += movimiento(1, letra, numero, tablero) + movimiento(2, letra, numero, tablero) + movimiento(4, letra, numero, tablero) + movimiento(7, letra, numero, tablero) + movimiento(8, letra, numero, tablero);
         }
 
-        return movimientos; // Movimientos que puede hacer.
+        return Tablero.QuitarComa(movimientos); // Movimientos que puede hacer.
     }
 }

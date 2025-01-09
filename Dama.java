@@ -104,7 +104,7 @@ public class Dama {
 
         movimientos += movimiento(letra,numero,tablero);
 
-        return movimientos;
+        return Tablero.QuitarComa(movimientos);
     }
 
     public static void HaciaAtras(int numeroTablero,int letraTablero,String[][] tablero,String verde){

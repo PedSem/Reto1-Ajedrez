@@ -133,6 +133,6 @@ public class Alfil {
             movimientosAlfil+=movimiento(1,letra,numero,tablero) + movimiento(7,letra,numero,tablero);
         }
 
-        return movimientosAlfil;
+        return Tablero.QuitarComa(movimientosAlfil);
     }
 }
