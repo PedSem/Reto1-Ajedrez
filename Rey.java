@@ -9,7 +9,7 @@ public class Rey {
 
         tablero = tb.InicializarTablero(); // Inicializa tablero en negro y blanco
 
-        String movimientos = (Rey(tablero, letra, numero)); // Guarda los posibles movimientos en un String para mostrarlos después
+        String movimientos = (MovimientosRey(tablero, letra, numero)); // Guarda los posibles movimientos en un String para mostrarlos después
 
         tb.getTablero(); // Imprime el tablero modificado
         System.out.println(movimientos); // Imprime los posibles movimientos
@@ -64,7 +64,7 @@ public class Rey {
                 return "Error";
         }
     }
-    public static String Rey(String[][] tablero, int letra, int numero) {
+    public static String MovimientosRey(String[][] tablero, int letra, int numero) {
         numero -= 1;
         tablero[letra][numero] = "\u001B[1;30m\u001B[43m R \u001B[0m";
 
