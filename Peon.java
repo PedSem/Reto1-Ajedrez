@@ -120,9 +120,9 @@ public class Peon {
         numero += 1;
 
         if (color.equals("B") && numero == 1) {
-            return "Error, un peón blanco situarse en la coordenada con numero 1";
+            return "Error, un peón blanco no puede situarse en la coordenada con numero 1";
         } else if (color.equals("N") && numero == 8) {
-            return "Error, un peón blanco situarse en la coordenada con numero 1";
+            return "Error, un peón blanco no puede situarse en la coordenada con numero 1";
         } else if (numero == 1 || numero == 8) {
             return "";
         }
